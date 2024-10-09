@@ -1,7 +1,7 @@
 # Movie Rental App
 
 ## Introduction
-Welcome to the Movie Rental App, a mock application built with Next.js and React. This application allows users to browse a collection of movies, add them to a cart, checkout rentals, and manage their rented movies—all handled on the frontend without backend user tracking. It's designed for demonstration and learning purposes, showcasing state management, context APIs, and interactive UI components.
+Movie Rental App, a mock application built with Next.js and React. This application allows users to browse a collection of movies, add them to a cart, checkout rentals, and manage their rented movies—all handled on the frontend without backend user tracking. It's designed for demonstration purposes, showcasing state management, context APIs, and interactive UI components.
 
 ## Features
 - **Browse Movies**: View a list of available movies with details such as genre, language, director, and stock availability
@@ -54,7 +54,6 @@ npm run dev
 # or
 yarn dev
 ```
-Open your browser and navigate to `http://localhost:3000` to view the application.
 
 ## Usage
 
@@ -65,19 +64,8 @@ Open your browser and navigate to `http://localhost:3000` to view the applicatio
 5. **Checkout Rentals**: In the cart drawer, click "Complete Rental" to finalize your rentals.
 6. **Manage Rentals**: Navigate to the "My Rentals" page via the header to view and return your rented movies.
 7. **Return Movies**: In the "My Rentals" page, click "Return Movie" to return a rented movie.
-
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the Repository
-2. Create a New Branch: `git checkout -b feature/YourFeature`
-3. Make Your Changes
-4. Commit Your Changes: `git commit -m "Add Your Feature"`
-5. Push to Your Fork: `git push origin feature/YourFeature`
-6. Create a Pull Request
-
-Feel free to reach out for any questions or feedback!
+8. 
+Open your browser and navigate to `http://localhost:3000` to view the application.
 
 ## Notes
 - **State Persistence**: Data will be lost on page refresh. Consider using localStorage for persistence.
