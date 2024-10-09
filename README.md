@@ -1,4 +1,4 @@
-# Movie Rental App
+# Movie Rental Frontend App
 ![image](https://github.com/user-attachments/assets/bf72af4d-adcd-4904-b6d4-80ce09c9f0e6)
 
 ## Introduction
