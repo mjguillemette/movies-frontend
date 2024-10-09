@@ -34,7 +34,7 @@ Movie Rental App, a mock application built with Next.js and React. This applicat
 
 1. **Clone the Repository**
 ```bash
-git clone https://github.com/mjguillemette/movie-rental-app.git
+git clone https://github.com/mjguillemette/movies-frontend.git
 ```
 
 2. **Navigate to the Project Directory**
