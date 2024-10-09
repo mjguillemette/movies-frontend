@@ -39,7 +39,7 @@ git clone https://github.com/mjguillemette/movies-frontend.git
 
 2. **Navigate to the Project Directory**
 ```bash
-cd movie-rental-app
+cd movies-frontend
 ```
 
 3. **Install Dependencies**
