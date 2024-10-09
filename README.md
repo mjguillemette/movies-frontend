@@ -1,4 +1,5 @@
 # Movie Rental App
+![image](https://github.com/user-attachments/assets/bf72af4d-adcd-4904-b6d4-80ce09c9f0e6)
 
 ## Introduction
 Movie Rental App, a mock application built with Next.js and React. This application allows users to browse a collection of movies, add them to a cart, checkout rentals, and manage their rented movies—all handled on the frontend without backend user tracking. It's designed for demonstration purposes, showcasing state management, context APIs, and interactive UI components.
