@@ -71,8 +71,3 @@ Open your browser and navigate to `http://localhost:3000` to view the applicatio
 - **State Persistence**: Data will be lost on page refresh. Consider using localStorage for persistence.
 - **Authentication**: This mock app doesn't include user authentication.
 - **Backend Limitations**: Frontend manages rental data while backend handles stock updates.
-
-### Additional Improvements
-- Persist rented movies using localStorage
-- Handle edge cases for rental management
-- Implement user authentication
