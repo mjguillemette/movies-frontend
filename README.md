@@ -7,6 +7,7 @@ Movie Rental App, a mock application built with Next.js and React. This applicat
 ## Features
 - **Browse Movies**: View a list of available movies with details such as genre, language, director, and stock availability
 - **Search Functionality**: Search for movies by title with debounced input to optimize performance
+- **Filter Functionality**: Filter movies by genre and language - currently handled on the front end due to time constraints
 - **Add to Cart**: Add movies to a rental cart, ensuring duplicates are not allowed and stock availability is respected
 - **Checkout Rentals**: Complete the rental process, updating movie stock and adding movies to the user's rented list
 - **Manage Rentals**: View and return rented movies, which updates the stock accordingly
