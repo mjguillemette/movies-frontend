@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronUp, Film } from "lucide-react";
 import { Movie } from "@/app/types/MovieTypes";
 import MovieCheckoutButton from "./CheckoutButton";
+import { useCart } from "../contexts/cartContext";
 
 export function MovieCardComponent({
   movie,
@@ -20,6 +21,11 @@ export function MovieCardComponent({
   onToggle: () => void;
 }) {
   const isOutOfStock = movie.stock < 1;
+  const { rentedMovies } = useCart();
+
+  const isRented = rentedMovies.some(
+    (rentedMovie) => rentedMovie.title === movie.title
+  );
 
   return (
     <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
@@ -93,19 +99,24 @@ export function MovieCardComponent({
               {isExpanded ? (
                 <>
                   <ChevronDown className="mr-2 h-4 w-4" />
-                  Show Less
+                  Hide Info
                 </>
               ) : (
                 <>
                   <ChevronUp className="mr-2 h-4 w-4" />
-                  Show More
+                  Show Info
                 </>
               )}
             </Button>
           </CardContent>
         </div>
         <div className="flex justify-center flex-grow p-2">
-          {isOutOfStock ? (
+          {isRented ? (
+            <Button disabled variant="default" className="w-full max-w-xs">
+              <Film className="mr-2 h-5 w-5" />
+              Already Rented
+            </Button>
+          ) : isOutOfStock ? (
             <Button disabled variant="outline" className="w-full max-w-xs">
               <Film className="mr-2 h-5 w-5" />
               Out of Stock

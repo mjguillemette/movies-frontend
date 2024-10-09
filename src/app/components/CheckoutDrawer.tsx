@@ -12,8 +12,6 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 import { useCart } from "../contexts/cartContext";
-import { get } from "http";
-import { getAllMovies } from "../services/movieService";
 
 type CheckoutDrawerProps = {
   isOpen: boolean;
@@ -21,13 +19,7 @@ type CheckoutDrawerProps = {
 };
 
 export function CheckoutDrawer({ isOpen, onClose }: CheckoutDrawerProps) {
-  const {
-    cart,
-    removeFromCart,
-    checkoutMovies,
-    isLoading,
-    error,
-  } = useCart();
+  const { cart, removeFromCart, checkoutMovies, isLoading, error } = useCart();
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
@@ -47,17 +39,17 @@ export function CheckoutDrawer({ isOpen, onClose }: CheckoutDrawerProps) {
             Review your selected movies before rental checkout
           </DrawerDescription>
         </DrawerHeader>
-        
+
         <div className="p-4 overflow-y-auto max-h-[60vh]">
           {error && (
             <div className="mb-4 p-2 bg-red-100 text-red-600 rounded">
               {error}
             </div>
           )}
-          
+
           {cart.map((movie) => (
-            <div 
-              key={movie.title} 
+            <div
+              key={movie.title}
               className="flex items-center justify-between py-2 border-b"
             >
               <div className="flex-1">
@@ -89,15 +81,15 @@ export function CheckoutDrawer({ isOpen, onClose }: CheckoutDrawerProps) {
             <span className="font-semibold">Total Rental Cost:</span>
             <span className="font-semibold">${total.toFixed(2)}</span>
           </div>
-          
-          <Button 
-            className="w-full" 
+
+          <Button
+            className="w-full"
             onClick={handleCheckout}
             disabled={isLoading || cart.length === 0}
           >
             {isLoading ? "Processing Rental..." : "Complete Rental"}
           </Button>
-          
+
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
           </DrawerClose>

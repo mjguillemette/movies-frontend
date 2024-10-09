@@ -1,24 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { getAllMovies, searchMovies } from "../services/movieService";
-import { Movie } from "../types/MovieTypes";
+import React, { useState } from "react";
 import { MovieCardComponent } from "./MovieCard";
-import MovieCardSkeleton from "./MovieCardSkeleton";
 import { motion, AnimatePresence } from "framer-motion";
-import useDebounce from "@/hooks/useDebounce";
+import { useMovies } from "../contexts/movieContext";
+import MovieCardSkeleton from "./MovieCardSkeleton";
 
 const MovieList: React.FC = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isSearching, setIsSearching] = useState(false);
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const { movies, isLoading, error, searchQuery, setSearchQuery } = useMovies();
   const [expandedMovieTitle, setExpandedMovieTitle] = useState<string | null>(
     null
   );
-  const [error, setError] = useState<string | null>(null);
-
-  const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   const handleToggle = (movieTitle: string) => {
     setExpandedMovieTitle((prevTitle) =>
@@ -26,59 +18,6 @@ const MovieList: React.FC = () => {
     );
   };
 
-  // Function to fetch all movies
-  const fetchAllMovies = async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await getAllMovies();
-      setMovies(response.data);
-    } catch (error) {
-      console.error("Failed to fetch movies:", error);
-      setError("An error occurred while fetching movies. Please try again.");
-      setMovies([]);
-    } finally {
-      setIsLoading(false);
-      setIsSearching(false);
-    }
-  };
-
-  // Function to fetch searched movies
-  const fetchSearchedMovies = async (query: string) => {
-    if (query.trim() === "") {
-      fetchAllMovies();
-      return;
-    }
-
-    setIsSearching(true);
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await searchMovies(query);
-      setMovies(response.data);
-    } catch (error) {
-      console.error("Failed to search movies:", error);
-      setError("An error occurred while searching for movies.");
-      setMovies([]);
-    } finally {
-      setIsLoading(false);
-      setIsSearching(false);
-    }
-  };
-
-  // Initial fetch
-  useEffect(() => {
-    fetchAllMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Handle search with debouncing
-  useEffect(() => {
-    fetchSearchedMovies(debouncedSearchQuery);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearchQuery]);
-
-  // Define motion variants for movie cards
   const cardVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
@@ -86,10 +25,9 @@ const MovieList: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto px-4 py-8 items-start max-w-7xl min-w-full">
+    <div className="mx-auto px-4 py-8 items-start max-w-7xl">
       <h1 className="text-3xl font-bold mb-6">Movie Collection</h1>
 
-      {/* Search Input */}
       <div className="mb-6">
         <label htmlFor="movie-search" className="sr-only">
           Search Movies
@@ -104,21 +42,13 @@ const MovieList: React.FC = () => {
         />
       </div>
 
-      {/* Loading Indicator */}
-      {isLoading && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {[...Array(8)].map((_, index) => (
-            <MovieCardSkeleton key={index} />
-          ))}
-        </div>
-      )}
+      {isLoading &&
+        Array.from({ length: 8 }).map((_, index) => (
+          <MovieCardSkeleton key={index} />
+        ))}
 
-      {/* Error Message */}
-      {error && (
-        <div className="text-center py-8 text-red-500">{error}</div>
-      )}
+      {error && <div className="text-center py-8 text-red-500">{error}</div>}
 
-      {/* Movies Grid */}
       {!isLoading && !error && (
         <>
           {movies.length > 0 ? (
@@ -157,9 +87,9 @@ const MovieList: React.FC = () => {
             </motion.div>
           ) : (
             <div className="text-center py-8">
-              {isSearching
-                ? "Searching movies..."
-                : "No movies found. Try a different search query."}
+              {searchQuery
+                ? "No movies found for your search."
+                : "No movies available at the moment."}
             </div>
           )}
         </>
