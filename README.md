@@ -21,7 +21,7 @@ Movie Rental App, a mock application built with Next.js and React. This applicat
 - **HTTP Client**: Axios
 - **Icons**: Lucide React
 - **Animations**: Framer Motion
-- **UI Components**: Custom UI components (Buttons, Badges, Drawers, etc.)
+- **shadcn UI Components**: Custom UI components (Buttons, Badges, Drawers, etc.)
 
 ## Getting Started
 
