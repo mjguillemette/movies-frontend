@@ -1,3 +1,4 @@
+import { CardFooter } from "@/components/ui/card";
 import FloatingCheckoutIndicator from "./components/FloatingCheckoutIndicator";
 import MovieList from "./components/MovieList";
 
