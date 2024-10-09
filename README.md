@@ -66,7 +66,7 @@ yarn dev
 5. **Checkout Rentals**: In the cart drawer, click "Complete Rental" to finalize your rentals.
 6. **Manage Rentals**: Navigate to the "My Rentals" page via the header to view and return your rented movies.
 7. **Return Movies**: In the "My Rentals" page, click "Return Movie" to return a rented movie.
-8. 
+
 Open your browser and navigate to `http://localhost:3000` to view the application.
 
 ## Notes
