@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 export default function MovieCardSkeleton() {
   return (
-    <Card className="w-full max-w-sm overflow-hidden relative h-[500px] flex flex-col">
+    <Card className="w-full max-w-sm overflow-hidden relative flex flex-col">
       <div className="relative w-full aspect-[2/3] flex-grow">
         <Skeleton className="absolute inset-0" />
       </div>

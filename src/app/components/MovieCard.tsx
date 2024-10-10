@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -29,7 +29,7 @@ export function MovieCardComponent({
 
   return (
     <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
-      <Card className="w-full max-w-sm overflow-hidden relative h-[500px] flex flex-col">
+      <Card className="w-full max-w-sm overflow-hidden relative flex flex-col">
         <motion.div
           className="absolute inset-0 z-10 bg-gradient-to-r from-transparent via-white to-transparent"
           style={{ opacity: 0 }}
@@ -84,8 +84,8 @@ export function MovieCardComponent({
                 <dd>${movie.price.toFixed(2)}</dd>
               </div>
               <div>
-                <dt className="font-semibold">Stock:</dt>
-                <dd>{movie.stock} available</dd>
+                <dt className="font-semibold">In stock:</dt>
+                <dd>{movie.stock}</dd>
               </div>
             </dl>
             <Button
