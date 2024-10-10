@@ -73,7 +73,7 @@ const MovieList: React.FC = () => {
   }, [movies, searchQuery, selectedGenres, selectedLanguages]);
 
   return (
-    <div className="mx-auto px-4 py-8 items-start min-w-7xl min-h-fit">
+    <div className="mx-auto px-4 py-8 items-start min-w-6xl min-h-fit max-w-6xl">
       <h1 className="text-3xl font-bold mb-6">Movie Collection</h1>
 
       {/* Search Bar */}
